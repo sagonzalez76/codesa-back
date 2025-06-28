@@ -1,0 +1,22 @@
+# Primero: Compila el proyecto con Maven y Java 17
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
+
+# Copia el codigo fuente
+COPY . .
+
+# Compila el proyecto y genera el .jar
+RUN mvn clean package -DskipTests
+
+# Segundo: Ejecuta el JAR en un contenedor mas liviano
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+
+# Copia el JAR desde la etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Expone el puerto
+EXPOSE 8080
+
+# Ejecuta la aplicación
+ENTRYPOINT ["java", "-jar", "app.jar"]
