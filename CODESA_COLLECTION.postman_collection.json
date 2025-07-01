@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "76aea6f6-0662-4a0f-85dc-1c74bf9f9615",
+		"name": "CODESA_COLLECTION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46264807"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario@test.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario@test.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PERSONAS",
+			"item": [
+				{
+					"name": "Listar Personas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/personas?page=0&size=2&sort=id,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Persona",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/personas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Persona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carlos\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2025-06-01\",\n    \"email\": \"carlos@test1.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Persona",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruizz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Persona",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ESTUDIANTES",
+			"item": [
+				{
+					"name": "Listar Estudiantes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/estudiantes?page=0&size=2&sort=id,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudiantes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estudiante",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carlos\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2025-06-01\",\n    \"email\": \"carlos@test.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estudiantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Estudiante",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/estudiantes/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudiantes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estudiante",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROFESORES",
+			"item": [
+				{
+					"name": "Listar Profesores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/profesores?page=0&size=2&sort=id,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Profesor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Laura\",\n    \"apellido\": \"Gómez\",\n    \"fechaNacimiento\": \"1980-03-21\",\n    \"email\": \"laura.gomez@example.comm\",\n    \"telefono\": \"3011122333\",\n    \"especialidad\": \"Matemáticas\",\n    \"fechaContratacion\": \"2010-01-15\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profesores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Profesor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Laura\",\n    \"apellido\": \"Gómez\",\n    \"fechaNacimiento\": \"1980-03-21\",\n    \"email\": \"laura.gomez@example.com\",\n    \"telefono\": \"3011122333\",\n    \"especialidad\": \"Matemáticas\",\n    \"fechaContratacion\": \"2010-01-15\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profesores/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Profesor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profesores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMINISTRATIVOS",
+			"item": [
+				{
+					"name": "Listar Administrativos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/administrativos?page=0&size=2&sort=id,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrativos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Administrativo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carlos\",\n    \"apellido\": \"Ruiz\",\n    \"fechaNacimiento\": \"1990-08-15\",\n    \"email\": \"carlos.ruiz@example.coom\",\n    \"telefono\": \"3109988776\",\n    \"cargo\": \"Secretario Académico\",\n    \"departamento\": \"Administración\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/administrativos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"administrativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Administrativo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Laura\",\n    \"apellido\": \"Gómez\",\n    \"fechaNacimiento\": \"1980-03-21\",\n    \"email\": \"laura.gomez@example.com\",\n    \"telefono\": \"3011122333\",\n    \"especialidad\": \"Matemáticas\",\n    \"fechaContratacion\": \"2010-01-15\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profesores/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Administrativo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CURSOS",
+			"item": [
+				{
+					"name": "Listar Cursos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Curso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Álgebraaaaaaaa Avanzada\",\n    \"descripcion\": \"Curso intensivo de álgebra para grado 10.\",\n    \"creditos\": 3,\n    \"idProfesor\": 21\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Curso",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"AAA\",\n  \"descripcion\": \"AA\",\n  \"creditos\": 3,\n//   \"idProfesor\": null,\n  \"profesorId\": null\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cursos/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cursos",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Curso",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cursos/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cursos",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "INSCRIPCIONES",
+			"item": [
+				{
+					"name": "Listar Inscripciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/inscripciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inscripciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Inscripcion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Álgebraaaaa Avanzada\",\n    \"descripcion\": \"Curso intensivo de álgebra para grado 10.\",\n    \"creditos\": 3,\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Inscripcion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Laura\",\n    \"apellido\": \"Gómez\",\n    \"fechaNacimiento\": \"1980-03-21\",\n    \"email\": \"laura.gomez@example.com\",\n    \"telefono\": \"3011122333\",\n    \"especialidad\": \"Matemáticas\",\n    \"fechaContratacion\": \"2010-01-15\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/profesores/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"profesores",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Inscripcion",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Carloss\",\n    \"apellido\": \"Rodríguez\",\n    \"fechaNacimiento\": \"2000-06-01\",\n    \"email\": \"carlos.ruiz@example.com\",\n    \"telefono\": \"3216547890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/personas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"personas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
