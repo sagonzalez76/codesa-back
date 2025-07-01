@@ -88,7 +88,7 @@ La aplicación está diseñada para ejecutarse fácilmente usando Docker Compose
 
 2.  **Navega a la raíz del proyecto backend:**
     ```bash
-    cd /ruta/a/tu/proyecto/backend # Reemplaza con la ruta real de tu directorio backend
+    cd /backend
     ```
 
 3.  **Inicia los servicios con Docker Compose:**
