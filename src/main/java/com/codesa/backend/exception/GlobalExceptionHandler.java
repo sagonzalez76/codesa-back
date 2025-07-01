@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> error = new HashMap<>();
         String message = ex.getRootCause() != null && ex.getRootCause().getMessage() != null
                 ? ex.getRootCause().getMessage()
-                : "Error de integridad de datos";
+                : "Violación de integridad de datos.";
 
         if (message.contains("Duplicate entry") && message.contains("persona.email")) {
             message = "Ya existe una persona registrada con este correo electrónico.";
@@ -46,28 +46,42 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleGlobal(Exception ex, WebRequest request) {
         Map<String, Object> error = new HashMap<>();
         error.put("mensaje", "Error interno del servidor");
-        error.put("detalles", ex.getMessage());
-        error.put("ruta", request.getDescription(false));
         error.put("estado", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        error.put("ruta", request.getDescription(false).replace("uri=", ""));
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidationException(MethodArgumentNotValidException ex, WebRequest request) {
         Map<String, Object> error = new HashMap<>();
-        Map<String, String> errores = new HashMap<>();
 
-        for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
-            errores.put(fieldError.getField(), fieldError.getDefaultMessage());
+        FieldError firstError = ex.getBindingResult().getFieldErrors().stream().findFirst().orElse(null);
+
+        String mensaje;
+        if (firstError != null) {
+            mensaje = firstError.getDefaultMessage();
+        } else {
+            mensaje = "Error de validación de datos.";
         }
 
-        error.put("mensaje", "Validación fallida");
+        error.put("mensaje", mensaje);
         error.put("estado", HttpStatus.BAD_REQUEST.value());
-        error.put("ruta", request.getDescription(false));
-        error.put("errores", errores);
+        error.put("ruta", request.getDescription(false).replace("uri=", ""));
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<?> handleAuthenticationException(AuthenticationException ex, WebRequest request) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("mensaje", ex.getMessage());
+        error.put("ruta", request.getDescription(false).replace("uri=", ""));
+        error.put("estado", HttpStatus.UNAUTHORIZED.value());
+        return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+    }
+
+
 
 
 

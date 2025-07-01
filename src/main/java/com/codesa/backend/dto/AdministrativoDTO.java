@@ -8,9 +8,9 @@ import jakarta.validation.constraints.*;
 @AllArgsConstructor
 public class AdministrativoDTO extends PersonaDTO {
 
-    @NotBlank
+    @NotBlank(message = "El cargo es obligatorio.")
     private String cargo;
 
-    @NotBlank
+    @NotBlank(message = "El departamento es obligatorio.")
     private String departamento;
 }

@@ -7,8 +7,12 @@ import com.codesa.backend.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.codesa.backend.exception.AuthenticationException;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -31,12 +35,23 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(),
+                            request.getPassword()
+                    )
+            );
+        } catch (BadCredentialsException e) {
+            throw new AuthenticationException("Las credenciales son incorrectas.");
+        } catch (DisabledException e) {
+            throw new AuthenticationException("La cuenta está deshabilitada.");
+        } catch (UsernameNotFoundException e) {
+            throw new AuthenticationException("El correo no está registrado.");
+        } catch (AuthenticationException e) {
+            throw new AuthenticationException("Error de autenticación.");
+        }
+
         String token = jwtService.generateToken(request.getEmail());
         return new AuthResponse(token);
     }

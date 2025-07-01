@@ -9,9 +9,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ProfesorDTO extends PersonaDTO {
 
-    @NotBlank
+    @NotBlank(message = "La especialidad es obligatoria.")
     private String especialidad;
 
-    @PastOrPresent
+    @PastOrPresent(message = "La fecha de contratación no puede ser futura.")
     private LocalDate fechaContratacion;
 }

@@ -10,14 +10,15 @@ public class CursoDTO {
 
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "El nombre del curso es obligatorio.")
     private String nombre;
 
     private String descripcion;
 
-    @Min(1)
+    @Min(value = 1, message = "Los créditos deben ser al menos 1.")
     private int creditos;
 
+    @NotNull(message = "Debe seleccionarse un profesor.")
     private Long idProfesor;
 
     public Long getProfesorId() {
