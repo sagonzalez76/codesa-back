@@ -108,7 +108,7 @@ La aplicación está diseñada para ejecutarse fácilmente usando Docker Compose
 
 Una vez que el backend esté en ejecución, puedes acceder a la documentación interactiva de la API (Swagger UI) en:
 
-* **`http://localhost:8080/swagger-ui/index.html`**
+* **`http://localhost:8080/swagger-ui/index.html#/`**
 
 Aquí podrás ver todos los endpoints disponibles, sus métodos, parámetros y modelos de respuesta.
 
