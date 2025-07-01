@@ -38,7 +38,7 @@ public class AuthController {
                         {
                           "nombre": "Juan",
                           "apellido": "Pérez",
-                          "email": "juan.perez@test.com",
+                          "email": "usuario@test.com",
                           "password": "123456",
                           "rol": "ESTUDIANTE"
                         }
