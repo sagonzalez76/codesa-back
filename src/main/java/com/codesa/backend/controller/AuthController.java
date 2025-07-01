@@ -74,7 +74,7 @@ public class AuthController {
                             )
                     )
             )
-            @RequestBody LoginRequest request // ← Aquí sí usas la de Spring
+            @RequestBody LoginRequest request
     ) {
         return ResponseEntity.ok(authService.login(request));
     }
